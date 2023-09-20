@@ -1,0 +1,377 @@
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        <style>
+            img{
+                height: 400px
+            }
+            .imagecart{
+              height: 100px;
+              width: 60px;
+            }
+            .card{
+              width: 18rem;
+              border-radius: 10px;
+              box-shadow: 0 5px 10px;
+              margin: 20px 10px;
+            }
+        </style>
+        
+        <title>Nguyen Do - Asignment 2</title>
+    </head>
+
+    <body>
+        <div class = "container">
+            <div class = "row">
+                <div class = "col-1"></div>
+                <div class = "col-10">
+
+                    <div class = "collapse cart", id = "cart">
+                      <div row class ="row g-3 bg-light" >
+                        <div class = "d-flex justify-content-start">
+                        <button class="btn btn-danger" id ="buttonReturn" type="submit" onclick="cartreturn()"><i class="bi bi-arrow-left-circle"></i> Return</button>
+                      </div>
+                      </div>
+
+                      <table class="table" id = "cart_table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Item</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Prices</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr id = "cart_fifa">
+                            <td><img src="fifa22.jpg" class = "imagecart"> FIFA 22 </td>
+                            <td id = "quan_fifa">0</td>
+                            <td id = "total_fifa"></td>
+                          </tr>
+                          <tr id = "cart_fm">
+                            <td><img src="footballmanager22.png" class = "imagecart"> Football Manager 22 </td>
+                            <td id = "quan_fm">0</td>
+                            <td id = "total_fm"></td>
+                          </tr>
+                          <tr id = "cart_sims">
+                            <td><img src="sims4.jpg" class = "imagecart"> The Sims 4 </td>
+                            <td id = "quan_sims">0</td>
+                            <td id = "total_sims"></td>
+                          </tr>
+                          <tr id = "cart_war">
+                            <td><img src="totalwar.jpg" class = "imagecart"> Total War </td>
+                            <td id = "quan_war">0</td>
+                            <td id = "total_war"></td>
+                          </tr>
+
+                          <tr id = "cart_witcher">
+                            <td><img src="witcher.jpg" class = "imagecart"> The Witcher 3 </td>
+                            <td id = "quan_witcher">0</td>
+                            <td id = "total_witcher"></td>
+                          </tr>
+
+                          <tr id = "cart_red">
+                            <td><img src="reddead.jpg" class = "imagecart"> Red Dead Redemption 2 </td>
+                            <td id = "quan_red">0</td>
+                            <td id = "total_red"></td>
+                          </tr>
+
+                          <tr>
+                            <td></td>
+                            <td> Total</td>
+                            <td id = "total"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                      <h1>Payment Information</h1>
+                        <div id="liveAlertPlaceholder"></div>
+   
+                         <form class="row g-3" id="checkout-form" >
+                           <div class="col-md-6">
+                             <label for="inputName" class="form-label">Full Name</label>
+                             <input type="text" class="form-control" id="inputName" >
+                             <div class="valid-feedback">
+                               Looks good!
+                             </div>
+                             <div class="invalid-feedback">
+                               Must be like, "John Doe"
+                             </div>
+                           </div>
+                           <div class="col-md-6">
+                             <label for="inputEmail4" class="form-label">Email</label>
+                             <input type="email" class="form-control" id="inputEmail4" >
+                             <div class="valid-feedback">
+                               Looks good!
+                             </div>
+                             <div class="invalid-feedback">
+                               Must be like, "abc@xyz.efg"
+                             </div>
+                           </div>
+   
+                           <div class="col-12">
+                             <label for="inputCard" class="form-label">Card</label>
+                             <div class="input-group mb-3">
+                               <span class="input-group-text" id="basic-addon1"><i class="bi-credit-card-fill"></i></span>
+                               <input type="text" id="inputCard" class="form-control" placeholder="XXXX-XXXX-XXXX-XXXX" aria-label="Username" aria-describedby="basic-addon1">
+                               <div class="valid-feedback">
+                               Looks good!
+                             </div>
+                             <div class="invalid-feedback">
+                               Must be like, "7777-7777-7777-7777"
+                             </div>
+                             </div>
+                           </div>
+                           
+                           <div class="col-12">
+                             <label for="inputAddress" class="form-label">Address</label>
+                             <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" >
+                             <div class="valid-feedback">
+                              Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                              Must be like, "1234 Main St"
+                            </div>
+                           </div>
+                           <div class="col-12">
+                             <label for="inputAddress2" class="form-label">Address 2</label>
+                             <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                           </div>
+                           <div class="col-md-6">
+                             <label for="inputCity" class="form-label">City</label>
+                             <input type="text" class="form-control" id="inputCity" >
+                             <div class="valid-feedback">
+                              Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                              Please enter your city!
+                            </div>
+                           </div>
+                           <div class="col-md-4">
+                             <label for="inputState" class="form-label">State</label>
+                             <select id="inputState" class="form-select" >
+                              <option selected>Choose...</option>
+                              <option value="AL">Alabama</option>
+                              <option value="AK">Alaska</option>
+                              <option value="AZ">Arizona</option>
+                              <option value="AR">Arkansas</option>
+                              <option value="CA">California</option>
+                              <option value="CO">Colorado</option>
+                              <option value="CT">Connecticut</option>
+                              <option value="DE">Delaware</option>
+                              <option value="DC">District Of Columbia</option>
+                              <option value="FL">Florida</option>
+                              <option value="GA">Georgia</option>
+                              <option value="HI">Hawaii</option>
+                              <option value="ID">Idaho</option>
+                              <option value="IL">Illinois</option>
+                              <option value="IN">Indiana</option>
+                              <option value="IA">Iowa</option>
+                              <option value="KS">Kansas</option>
+                              <option value="KY">Kentucky</option>
+                              <option value="LA">Louisiana</option>
+                              <option value="ME">Maine</option>
+                              <option value="MD">Maryland</option>
+                              <option value="MA">Massachusetts</option>
+                              <option value="MI">Michigan</option>
+                              <option value="MN">Minnesota</option>
+                              <option value="MS">Mississippi</option>
+                              <option value="MO">Missouri</option>
+                              <option value="MT">Montana</option>
+                              <option value="NE">Nebraska</option>
+                              <option value="NV">Nevada</option>
+                              <option value="NH">New Hampshire</option>
+                              <option value="NJ">New Jersey</option>
+                              <option value="NM">New Mexico</option>
+                              <option value="NY">New York</option>
+                              <option value="NC">North Carolina</option>
+                              <option value="ND">North Dakota</option>
+                              <option value="OH">Ohio</option>
+                              <option value="OK">Oklahoma</option>
+                              <option value="OR">Oregon</option>
+                              <option value="PA">Pennsylvania</option>
+                              <option value="RI">Rhode Island</option>
+                              <option value="SC">South Carolina</option>
+                              <option value="SD">South Dakota</option>
+                              <option value="TN">Tennessee</option>
+                              <option value="TX">Texas</option>
+                              <option value="UT">Utah</option>
+                              <option value="VT">Vermont</option>
+                              <option value="VA">Virginia</option>
+                              <option value="WA">Washington</option>
+                              <option value="WV">West Virginia</option>
+                              <option value="WI">Wisconsin</option>
+                              <option value="WY">Wyoming</option>
+                             </select>
+                             <div class="valid-feedback">
+                              Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                              Please select a state!
+                            </div>
+                           </div>
+                           <div class="col-md-2">
+                             <label for="inputZip" class="form-label">Zip</label>
+                             <input type="text" class="form-control" id="inputZip" >
+                             <div class="valid-feedback">
+                              Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                              Must be like 50310
+                            </div>
+                           </div>
+                           
+                           <div class="col-12">
+                             <button type="submit" class="btn btn-success"> <i class="bi-bag-check"></i> Order</button>
+                           </div>
+                         </form>
+
+                         <div class="card collapse" style="width: 36rem;">
+                          <div class="card-body">
+                            <h5 class="card-title">Order summary</h5>
+                            <p class="card-text">Here is a summary of your order.</p>
+                            
+                          </div>
+                          <ul class="list-group list-group-flush">
+  
+                          </ul>
+                          <a href="" onclick="location.reload()" class="btn btn-secondary"> <i class="bi-arrow-left-circle"></i> Return</a>
+                        </div>
+                       </div>
+
+                    <div class = "main_content" id = "main_content">
+                    <h1>Game shop</h1>
+                    <div row class ="row g-3 bg-light" >
+                        <div class="col-5">
+                            <form class="d-flex" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Search" id="Search" onkeyup="gameSearch()">
+                                <button class="btn btn-outline-success" type="button">Search</button>
+                            </form>
+                        </div>
+                        <div class ="col-7">
+                            <div class = "d-flex justify-content-end">
+                                <button class="btn btn-primary" type="submit" id = "checkout" onclick="checkout()"><i class="bi bi-arrow-right-circle"></i> Checkout</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="row row-cols-3" id = "game_list">
+                        
+                            <div class="card p-0">
+                                <img src="fifa22.jpg" class="card-img-top" alt="FIFA 22">
+                                <div class="card-body">
+                                  <span class="badge rounded-pill bg-success" style="font-size:1rem;">20.00$</span>
+                                  <div class="game_title"><b>FIFA 22</b></div>
+                                  <p class="card-text">Powered by Football™, EA SPORTS™ FIFA 22 brings the game even closer to the real thing with fundamental gameplay advances and a new season of innovation across every mode..</p>
+                                </div>
+                                <div class = "input-group">
+                                  <input class="form-control" type="number" value = 0 id="fifa_display" disabled>
+                                  <button type="button" class="btn btn-outline-info " onclick="increase(1)">+</button>
+                                  <button type="button" class="btn btn-outline-info " onclick="decrease(1)">-</button>  
+                                </div>
+                                
+                            </div>
+                        
+                        
+                            <div class="card p-0">
+                                <img src="footballmanager22.png" class="card-img-top" alt="Football manager 22">
+                                <div class="card-body">
+                                  <span class="badge rounded-pill bg-success" style="font-size:1rem;">50.00$</span>
+                                  <div class="game_title"><b>Football Manager 22</b></div>
+                                  <p class="card-text">The closest thing to real football management. FM22 brings new, progressive ways to find your winning edge, instill your footballing style and earn it on the pitch.</p>
+                                </div> 
+                                <div class = "input-group">
+                                  <input class="form-control" type="number" value="0" id="fm_display" disabled>
+                                  <button type="button" class="btn btn-outline-info" onclick="increase(2)">+</button>
+                                  <button type="button" class="btn btn-outline-info" onclick="decrease(2)">-</button>  
+                              </div>
+                            </div>
+                        
+                
+                            <div class="card p-0">
+                                <img src="sims4.jpg" class="card-img-top" alt="The Sims 4">
+                                <div class="card-body">
+                                  <span class="badge rounded-pill bg-success" style="font-size:1rem;">15.00$</span>
+                                  <div class="game_title"><b>The Sims 4</b></div>
+                                  <p class="card-text">Play with life and discover the possibilities. Unleash your imagination and create a world of Sims that’s wholly unique. Explore and customize every detail from Sims to homes–and much more.</p>
+                                </div>
+                                <div class = "input-group">
+                                    <input class="form-control" type="number" value="0" id="sims_display" disabled>
+                                    <button type="button" class="btn btn-outline-info" onclick="increase(3)">+</button>
+                                    <button type="button" class="btn btn-outline-info" onclick="decrease(3)">-</button>  
+                                </div>
+                            
+                            </div>
+                       
+                        
+                            <div class="card p-0">
+                                <img src="totalwar.jpg" class="card-img-top" alt="Total War">
+                                <div class="card-body">
+                                  <span class="badge rounded-pill bg-success" style="font-size:1rem;">50.00$</span>
+                                  <div class="game_title"><b>Total War: Rome II</b></div>
+                                  <p class="card-text">Emperor Edition is the definitive edition of ROME II, featuring an improved politics system, overhauled building chains, rebalanced battles and improved visuals in both campaign and battle.</p>
+                                </div>
+                                <div class = "input-group">
+                                    <input class="form-control" type="number" value="0" id="war_display" disabled>
+                                    <button type="button" class="btn btn-outline-info" onclick="increase(4)">+</button>
+                                    <button type="button" class="btn btn-outline-info" onclick="decrease(4)">-</button>  
+                                </div>
+                            </div>
+                        
+                            <div class="card p-0">
+                                <img src="witcher.jpg" class="card-img-top" alt="The Witcher 3">
+                                <div class="card-body">
+                                  <span class="badge rounded-pill bg-success" style="font-size:1rem;">40.00$</span>
+                                  <div class="game_title"><b>The Witcher 3</b></div>
+                                  <p class="card-text">The Witcher 3: As war rages on throughout the Northern Realms, you take on the greatest contract of your life — tracking down the Child of Prophecy, a living weapon that can alter the shape of the world and change your destiny.</p>
+                                </div>
+                                <div class = "input-group">
+                                    <input class="form-control" type="number" value="0" id="witcher_display" disabled>
+                                    <button type="button" class="btn btn-outline-info" onclick="increase(5)">+</button>
+                                    <button type="button" class="btn btn-outline-info" onclick="decrease(5)">-</button>  
+                                </div>
+                            </div>
+                        
+                            <div class="card p-0">
+                                <img src="reddead.jpg" class="card-img-top" alt="Red Deed Redemption 2">
+                                <div class="card-body">
+                                  <span class="badge rounded-pill bg-success" style="font-size:1rem;">60.00$</span>
+                                  <div class="game_title"><b>Red Dead Redemption 2</b></div>
+                                  <p class="card-text">Winner of over 175 Game of the Year Awards and recipient of over 250 perfect scores, RDR2 is the epic tale of outlaw Arthur Morgan and the infamous Van der Linde gang, on the run across America</p>
+                                </div>
+                                <div class = "input-group">
+                                    <input class="form-control" type="number" value="0" id="red_display" disabled>
+                                    <button type="button" class="btn btn-outline-info" onclick="increase(6)">+</button>
+                                    <button type="button" class="btn btn-outline-info" onclick="decrease(6)">-</button>  
+                                </div>
+                            </div>
+                        
+                     </div>
+                    </div>
+                  
+
+                     
+
+                     
+                    
+                     <footer class="bd-footer py-4 py-md-5 mt-5 bg-light">
+                        <div class="container py-4 py-md-5 px-4 px-md-3">
+                          <div class="row">
+                            <div class="col-lg-12 mb-3">
+                              <b>Com-S 319</b> Store cart.
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </footer>       
+                </div>
+                        
+                <div class = "col-1"></div>
+                
+            </div>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>
